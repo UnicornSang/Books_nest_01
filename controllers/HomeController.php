@@ -9,6 +9,7 @@ class HomeController
     }
     
 public function Home(){
+    $listSanPham = $this->modelSanPham->getAllSanPham();
     require_once './views/home.php';
 }
 public function trangChu(){
