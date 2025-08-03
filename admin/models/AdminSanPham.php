@@ -202,7 +202,7 @@ class AdminSanPham
         }
     }
 
-     public function destroyAnhSanPham($id)
+    public function destroyAnhSanPham($id)
     {
         try {
             $sql = 'DELETE FROM hinh_anh_san_pham  WHERE id =:id';
@@ -220,5 +220,35 @@ class AdminSanPham
             echo "lỗi" . $e->getMessage();
         }
     }
+    public function getDetailBinhLuan($id)
+    {
+        try {
+            $sql = 'SELECT * FROM binh_luan WHERE id = :id';
+            $stmt = $this->conn->prepare($sql);
 
+            $stmt->execute([
+
+                ':id' => $id,
+
+            ]);
+        } catch (Exception $e) {
+            echo "lỗi" . $e->getMessage();
+        }
+    }
+
+    public function getBinhLuanFormSanPham($id)
+    {
+        try {
+            $sql = 'SELECT binh_luan.*, tai_khoan.ho_ten FROM binh_luan INNER JOIN tai_khoan ON binh_luan.tai_khoan_id= tai_khoan.id WHERE binh_luan.san_pham_id = :id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+
+                ':id' => $id,
+
+            ]);
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            echo "lỗi" . $e->getMessage();
+        }
+    }
 }
