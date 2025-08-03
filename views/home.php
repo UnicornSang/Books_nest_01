@@ -84,7 +84,7 @@ require_once 'layout/menu.php';
                     <div class="row">
 
                         <?php foreach ($listSanPham as $key => $sanPham): ?>
-                            <?php if($key>=8) break;?>
+                            <?php if ($key >= 8) break; ?>
                             <div class="col-md-3">
 
                                 <div class="product-item">
@@ -143,24 +143,24 @@ require_once 'layout/menu.php';
 </section>
 <style>
     .main-slider {
-    position: relative;
-    overflow: visible;
-    padding: 0 2rem;
-}
+        position: relative;
+        overflow: visible;
+        padding: 0 2rem;
+    }
 
-.slider-item {
-    padding: 2rem 0;
-}
+    .slider-item {
+        padding: 2rem 0;
+    }
 
-.slick-arrow.prev {
-    left: -60px;
-    z-index: 10;
-}
+    .slick-arrow.prev {
+        left: -60px;
+        z-index: 10;
+    }
 
-.slick-arrow.next {
-    right: -60px;
-    z-index: 10;
-}
+    .slick-arrow.next {
+        right: -60px;
+        z-index: 10;
+    }
 </style>
 <section id="best-selling" class="leaf-pattern-overlay">
     <div class="corner-pattern-overlay"></div>
@@ -237,7 +237,7 @@ require_once 'layout/menu.php';
                     <div id="all-genre" data-tab-content class="active">
                         <div class="row">
                             <?php foreach ($listSanPham as $sanPham): ?>
-                                <?php if($key>=8) break;?>
+                                <?php if ($key >= 8) break; ?>
                                 <div class="col-md-3">
                                     <div class="product-item">
                                         <figure class="product-style">
@@ -250,9 +250,9 @@ require_once 'layout/menu.php';
                                             <div class="item-price"><?= number_format($sanPham['gia_san_pham'], 0, '', '.') ?> VNĐ</div>
                                         </figcaption>
                                     </div>
-                                
+
                                 </div>
-<?php endforeach; ?>
+                            <?php endforeach; ?>
 
 
                         </div>
@@ -329,19 +329,18 @@ require_once 'layout/menu.php';
                     <div class="col-md-6">
 
                         <div class="title-element">
-                            <h2 class="section-title divider">Subscribe to our newsletter</h2>
+                            <h2 class="section-title divider">Đăng ký để nhận thông tin mới </h2>
                         </div>
 
                     </div>
                     <div class="col-md-6">
 
                         <div class="subscribe-content" data-aos="fade-up">
-                            <p>Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur. Elit
-                                adipiscing enim pharetra hac.</p>
+                            <p>Hãy để lại email của bạn để nhận những tựa sách và chương trình khuyến mãi mới nhất!</p>
                             <form id="form">
-                                <input type="text" name="email" placeholder="Enter your email addresss here">
+                                <input type="text" name="email" placeholder="Nhập email của bạn" >
                                 <button class="btn-subscribe">
-                                    <span>send</span>
+                                    <span>gửi</span>
                                     <i class="icon icon-send"></i>
                                 </button>
                             </form>

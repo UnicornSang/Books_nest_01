@@ -49,7 +49,7 @@ class AdminSanPham
             echo "lỗi" . $e->getMessage();
         }
     }
-    public function getDetaiSanPham($id)
+    public function getDetailSanPham($id)
     {
         try {
             $sql = 'SELECT  san_pham.* , danh_muc.ten_danh_muc FROM san_pham INNER JOIN danh_muc ON san_pham.danh_muc_id=danh_muc.id WHERE san_pham.id = :id';
@@ -160,7 +160,7 @@ class AdminSanPham
         }
     }
 
-    public function getDetaiAnhSanPham($id)
+    public function getDetailAnhSanPham($id)
     {
         try {
             $sql = 'SELECT * FROM hinh_anh_san_pham

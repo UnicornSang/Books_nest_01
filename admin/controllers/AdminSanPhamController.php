@@ -141,7 +141,7 @@ class AdminSanPhamController
         //lấy ra thông tin cua form đang sửa
         $id = $_GET['id_san_pham'];
 
-        $sanPham = $this->modelSanPham->getDetaiSanPham($id);
+        $sanPham = $this->modelSanPham->getDetailSanPham($id);
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
 
@@ -168,7 +168,7 @@ class AdminSanPhamController
             // die();
             //lấy ra dữ liệu
             $san_pham_id = $_POST['san_pham_id'] ?? '';
-            $sanPhamOld = $this->modelSanPham->getDetaiSanPham($san_pham_id);
+            $sanPhamOld = $this->modelSanPham->getDetailSanPham($san_pham_id);
             $old_file = $sanPhamOld['hinh_anh']; // lấy ảnh cũ để phục vụ cho nhu cầu sửa ảnh
 
             $ten_san_pham = $_POST['ten_san_pham'] ?? '';
@@ -260,7 +260,7 @@ class AdminSanPhamController
         if (isset($_GET['id_san_pham'])) {
             $id = $_GET['id_san_pham'];
             $sanPhamMoldel = new AdminSanPham();
-            $sanPham = $sanPhamMoldel->getDetaiSanPham($id);
+            $sanPham = $sanPhamMoldel->getDetailSanPham($id);
             $listAnhSanPham = $sanPhamMoldel->getListAnhSanPham($id);
             $listBinhLuanSanPham = $this->modelBinhLuan->getBinhLuanByIdSanPham($id);
             // var_dump($listAnhSanPham);die;
@@ -272,7 +272,7 @@ class AdminSanPhamController
     {
         $id = $_GET['id_san_pham'];
 
-        $sanPham = $this->modelSanPham->getDetaiSanPham($id);
+        $sanPham = $this->modelSanPham->getDetailSanPham($id);
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
         if ($sanPham) {
             deleteFile($sanPham['hinh_anh']);
@@ -319,7 +319,7 @@ class AdminSanPhamController
             // lưu ảnh mới vào db và xóa ảnh cũ
           foreach($upload_file as $file_info){
             if($file_info['id']){
-                $old_file = $this->modelSanPham->getDetaiAnhSanPham($file_info['id'])['link_hinh_anh'];
+                $old_file = $this->modelSanPham->getDetailAnhSanPham($file_info['id'])['link_hinh_anh'];
 
                 //cập nhật ảnh cũ
                 $this->modelSanPham->updateAnhSanPham($file_info['id'], $file_info['file']);
