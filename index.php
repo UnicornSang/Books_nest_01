@@ -23,6 +23,7 @@ match ($act) {
 
     'trangchu' =>(new HomeController())->trangChu(),
 
-    'danh-sach-san-pham' =>(new HomeController())->danhSachSanPham()
+    'danh-sach-san-pham' =>(new HomeController())->danhSachSanPham(),
     
+    'chi-tiet-san-pham' => (new HomeController())->chiTietSanPham()
 };

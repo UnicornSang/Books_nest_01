@@ -1905,7 +1905,7 @@ img.post-image {
 
 @media screen and (max-width: 1366px) {
   #billboard button.prev.slick-arrow {
-    left: 0;
+    left: 0px;
   }
 
   #billboard button.next.slick-arrow {

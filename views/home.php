@@ -84,37 +84,37 @@ require_once 'layout/menu.php';
                     <div class="row">
 
                         <?php foreach ($listSanPham as $key => $sanPham): ?>
-
+                            <?php if($key>=8) break;?>
                             <div class="col-md-3">
 
                                 <div class="product-item">
-                                    <?php if($sanPham['luot_xem']>10){ ?>
-                                    <figure class="product-style">
-                                        <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="Books" class="product-item img-fluid">
-                                        <button type="button" class="add-to-cart btn" data-product-tile="add-to-cart">Xem chi tiết</button>
-                                    </figure>
-                                    <div class="product-badge">
-                                        <?php
-                                        $ngayNhap = new DateTime($sanPham['ngay_nhap']);
-                                        $ngayHienTai = new DateTime();
-                                        $tinhNgay = $ngayHienTai->diff($ngayNhap);
+                                    <?php if ($sanPham['luot_xem'] > 10) { ?>
+                                        <figure class="product-style">
+                                            <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="100" height="auto" alt="Books" class="product-item img-fluid">
+                                            <button type="button" class="add-to-cart btn" data-product-tile="add-to-cart">Xem chi tiết</button>
+                                        </figure>
+                                        <div class="product-badge">
+                                            <?php
+                                            $ngayNhap = new DateTime($sanPham['ngay_nhap']);
+                                            $ngayHienTai = new DateTime();
+                                            $tinhNgay = $ngayHienTai->diff($ngayNhap);
 
-                                        if ($tinhNgay->days <= 7) {
-                                        ?>
+                                            if ($tinhNgay->days <= 7) {
+                                            ?>
 
-                                            <div class="badge bg-primary position-absolute top-0 start-0">
-                                                <span>Mới</span>
-                                            </div>
+                                                <div class="badge bg-danger position-absolute top-0 start-0">
+                                                    <span>Mới</span>
+                                                </div>
 
-                                        <?php } ?>
+                                            <?php } ?>
 
 
-                                    </div>
-                                    <figcaption>
-                                        <h3><?= $sanPham['ten_san_pham'] ?></h3>
-                                        <span><?= $sanPham['ten_danh_muc'] ?></span>
-                                        <div class="item-price"><?= number_format($sanPham['gia_san_pham'], 0, '', '.') ?> VNĐ</div>
-                                    </figcaption>
+                                        </div>
+                                        <figcaption>
+                                            <h3><?= $sanPham['ten_san_pham'] ?></h3>
+                                            <span><?= $sanPham['ten_danh_muc'] ?></span>
+                                            <div class="item-price"><?= number_format($sanPham['gia_san_pham'], 0, '', '.') ?> VNĐ</div>
+                                        </figcaption>
                                     <?php } ?>
                                 </div>
 
@@ -141,58 +141,75 @@ require_once 'layout/menu.php';
         </div>
     </div>
 </section>
+<style>
+    .main-slider {
+    position: relative;
+    overflow: visible;
+    padding: 0 2rem;
+}
 
+.slider-item {
+    padding: 2rem 0;
+}
+
+.slick-arrow.prev {
+    left: -60px;
+    z-index: 10;
+}
+
+.slick-arrow.next {
+    right: -60px;
+    z-index: 10;
+}
+</style>
 <section id="best-selling" class="leaf-pattern-overlay">
     <div class="corner-pattern-overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h2 class="section-title  text-center">Deal hời hôm nay</h2>
 
-            <div class="col-md-8">
+                <div class="position-relative">
+                    <button style="" class="prev slick-arrow position-absolute start-10 top-50 translate-middle-y z-3 p-4 btn btn-light rounded-circle ">
+                        <i class="icon icon-arrow-left"></i>
+                    </button>
 
-                <div class="row">
+                    <div class="main-slider pattern-overlay">
+                        <?php foreach ($listSanPham as $sanPham) : ?>
+                            <div class="slider-item">
+                                <div class="row align-items-center">
+                                    <!-- Cột ảnh -->
+                                    <div class="col-md-6 text-center">
+                                        <img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" alt="book" class="img-fluid rounded shadow w-75">
+                                    </div>
 
-                    <div class="col-md-6">
-                        <figure class="products-thumb">
-                            <img src="./assets/images/single-image.jpg" alt="book" class="single-image">
-                        </figure>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="product-entry">
-                            <h2 class="section-title divider">Deal hời hôm nay</h2>
-                            <?php foreach ($listSanPham as $sanPham) : ?>
-                                <div class="col-md-03">
-                                    <div class="products-content">
-                                        <div class="author-name">By Timbur Hood</div>
-                                        <h3 class="item-title">Birds gonna be happy</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet,
-                                            libero ipsum enim pharetra hac.</p>
-                                        <?php
-                                        if ($sanPham['gia_khuyen_mai']) { ?>
-
-                                            <div class="badge bg-danger position-absolute top-0 start-0"><span>Giảm giá</span></div>
-                                        <?php
-
-                                        }
-                                        ?>
-                                        <div class="text-decoration-line-through me-2"><?= number_format($sanPham['gia_san_pham'], 0, '', '.') ?> VNĐ</div>
-                                        <div class="item-price text-danger fw-bold"><?= number_format($sanPham['gia_khuyen_mai'], 0, '', '.') ?> VNĐ</div>
-                                        <div class="btn-wrap">
-                                            <a href="#" class="btn-accent-arrow">Xem chi tiết<i
-                                                    class="icon icon-ns-arrow-right"></i></a>
+                                    <!-- Cột nội dung -->
+                                    <div class="col-md-6">
+                                        <div class="product-entry">
+                                            <div class="products-content">
+                                                <div class="banner-title mb-1"><?= $sanPham['ten_danh_muc'] ?></div>
+                                                <h3 class="item-title"><?= $sanPham['ten_san_pham'] ?></h3>
+                                                <p><?= $sanPham['mo_ta'] ?></p>
+                                                <div class="text-decoration-line-through text-muted mb-1">
+                                                    <?= number_format($sanPham['gia_san_pham'], 0, '', '.') ?> VNĐ
+                                                </div>
+                                                <div class="item-price text-danger fw-bold mb-3">
+                                                    <?= number_format($sanPham['gia_khuyen_mai'], 0, '', '.') ?> VNĐ
+                                                </div>
+                                                <a href="#" class="btn btn-outline-dark">Xem chi tiết</a>
+                                            </div>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
                                 </div>
-
-                        </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
 
+                    <button class="next slick-arrow position-absolute end-10 top-50 translate-middle-y z-3 p-4 btn btn-light rounded-circle ">
+                        <i class="icon icon-arrow-right"></i>
+                    </button>
                 </div>
-                <!-- / row -->
-
             </div>
-
         </div>
     </div>
 </section>
@@ -211,7 +228,7 @@ require_once 'layout/menu.php';
 
                 <ul class="tabs">
                     <li data-tab-target="#all-genre" class="active tab">Tất cả</li>
-                    <?php foreach ($listSanPham as $danhMuc): ?>
+                    <?php foreach ($listDanhMuc as $danhMuc): ?>
                         <li data-tab-target="#<?= strtolower($danhMuc['ten_danh_muc']) ?>" class="tab"><?= $danhMuc['ten_danh_muc'] ?></li>
                     <?php endforeach; ?>
                 </ul>
@@ -220,6 +237,7 @@ require_once 'layout/menu.php';
                     <div id="all-genre" data-tab-content class="active">
                         <div class="row">
                             <?php foreach ($listSanPham as $sanPham): ?>
+                                <?php if($key>=8) break;?>
                                 <div class="col-md-3">
                                     <div class="product-item">
                                         <figure class="product-style">
@@ -232,9 +250,9 @@ require_once 'layout/menu.php';
                                             <div class="item-price"><?= number_format($sanPham['gia_san_pham'], 0, '', '.') ?> VNĐ</div>
                                         </figcaption>
                                     </div>
-                                <?php endforeach; ?>
+                                
                                 </div>
-
+<?php endforeach; ?>
 
 
                         </div>
