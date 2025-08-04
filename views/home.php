@@ -329,21 +329,18 @@ require_once 'layout/menu.php';
                     <div class="col-md-6">
 
                         <div class="title-element">
-                            <h2 class="section-title divider">Đăng ký để nhận thông tin mới </h2>
+                            <h2 class="section-title divider">Đăng ký để mua sản phẩm </h2>
                         </div>
 
                     </div>
                     <div class="col-md-6">
 
                         <div class="subscribe-content" data-aos="fade-up">
-                            <p>Hãy để lại email của bạn để nhận những tựa sách và chương trình khuyến mãi mới nhất!</p>
-                            <form id="form">
-                                <input type="text" name="email" placeholder="Nhập email của bạn" >
-                                <button class="btn-subscribe">
-                                    <span>gửi</span>
+                             <button class="btn btn-success ">
+                                    <span><a href="<?php BASE_URL. "?act=dang-ky-tai-khoan" ?>"></a> Đăng ký ngay</span>
                                     <i class="icon icon-send"></i>
                                 </button>
-                            </form>
+                           
                         </div>
 
                     </div>

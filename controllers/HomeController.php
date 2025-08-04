@@ -33,7 +33,7 @@ public function chiTietSanPham(){
     if($sanPham){
         require_once './views/detailSanPham.php';
     }else{
-        header('Location: ' . BASE_URL . '?act=danh-sach-san-pham');
+        header('Location: ' . BASE_URL);
         exit();
     }
 }
