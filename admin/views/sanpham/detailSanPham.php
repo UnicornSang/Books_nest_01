@@ -34,9 +34,11 @@
                         <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
                         <div class="col-12">
                             <img style="width: 500px; height:500px" src=" <?= BASE_URL . $sanPham['hinh_anh'] ?>" class="product-image" alt="Product Image">
+
                         </div>
                         <div class="col-12 product-image-thumbs">
                             <?php foreach ($listAnhSanPham as $key => $anhSP): ?>
+
                                 <div class="product-image-thumb"><img src="<?= BASE_URL . $anhSP['link_hinh_anh']; ?>" alt="Product Image"></div>
                             <?php endforeach ?>
                         </div>
@@ -87,24 +89,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tbody>
-                                <tbody>
-                                    <?php foreach ($listBinhLuanSanPham as $key => $binhluan): ?>
+                                    <?php foreach ($listBinhLuanSanPham as $key => $binhLuan): ?>
+
                                         <tr>
                                             <td><?= $key + 1 ?></td>
-                                            <td><?= isset($binhluan['tai_khoan_id']) ? htmlspecialchars($binhluan['tai_khoan_id']) : 'Không rõ'; ?></td>
-                                            <td><?= isset($binhluan['noi_dung']) ? htmlspecialchars($binhluan['noi_dung']) : ''; ?></td>
-                                            <td><?= isset($binhluan['ngay_dang']) ? htmlspecialchars($binhluan['ngay_dang']) : 'Chưa xác định'; ?></td>
                                             <td>
-                                                <a href="?act=an-binh-luan&id_binh_luan=<?= $binhluan['id'] ?>&id_san_pham=<?= $id ?>" class="btn btn-warning btn-sm">Ẩn</a>
-                                                <a href="?act=xoa-binh-luan&id_binh_luan=<?= $binhluan['id'] ?>&id_san_pham=<?= $id ?>" class="btn btn-danger btn-sm">Xoá</a>
+                                                <a target="_blank" href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang' . $binhLuan['tai_khoan_id']; ?>">
+                                                    <?= $binhLuan['ho_ten'] ?>
+                                                </a>
+                                            </td>
+                                            <td><?= $binhLuan['noi_dung']  ?></td>
+                                            <td><?= $binhLuan['ngay_dang']  ?></td>
+                                            <td>
+                                                <a href="?act=an-binh-luan&id_binh_luan=<?= $binhLuan['id'] ?>&id_san_pham=<?= $id ?>" class="btn btn-warning btn-sm">Ẩn</a>
+                                                <a href="?act=xoa-binh-luan&id_binh_luan=<?= $binhLuan['id'] ?>&id_san_pham=<?= $id ?>" class="btn btn-danger btn-sm">Xoá</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
 
 
-                                
+                                </tbody>
 
                             </table>
 

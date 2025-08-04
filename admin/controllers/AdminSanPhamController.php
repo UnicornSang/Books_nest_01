@@ -9,7 +9,6 @@ class AdminSanPhamController
     {
         $this->modelSanPham = new AdminSanPham();
         $this->modelDanhMuc = new AdminDanhMuc();
-        $this->modelBinhLuan = new AdminBinhLuan();
     }
 
     public function dannhSachSanPham()
@@ -262,8 +261,9 @@ class AdminSanPhamController
             $sanPhamMoldel = new AdminSanPham();
             $sanPham = $sanPhamMoldel->getDetailSanPham($id);
             $listAnhSanPham = $sanPhamMoldel->getListAnhSanPham($id);
-            $listBinhLuanSanPham = $this->modelBinhLuan->getBinhLuanByIdSanPham($id);
             // var_dump($listAnhSanPham);die;
+            $listBinhLuanSanPham = $this->modelSanPham->getBinhLuanFormSanPham($id);
+            
             require_once './views/sanpham/detailsanpham.php';
         }
     }
@@ -346,5 +346,18 @@ class AdminSanPhamController
         }
         header("location: " . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham' . $san_pham_id);
                 exit();
+    }
+
+    public function updateTrangThaiBinhLuan(){
+        $id_binh_luan = $_GET['id_binh_luan'];
+        $binhLuan = $this->modelSanPham->getDetailBinhLuan($id_binh_luan);
+        if($binhLuan){
+            $trang_thai_update = '';
+            if($binhLuan['trang_thai']==1){
+                $trang_thai_update =2 ;
+            } else{
+                $trang_thai_update = 1;
+            }
+        }
     }
 }
